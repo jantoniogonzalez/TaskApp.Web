@@ -4,13 +4,17 @@
 @{
 }
 
-@model AddPersonViewModel
+@model TaskApp.Web.Models.Entities.Person
 
-
-<h1>Add Person</h1>
+<h1>Edit Person</h1>
 
 <form method="post">
 
+    <div class="mt-3">
+        <label class="form-label">Id</label>
+        <input type="text" class="form-control" asp-for="Id" readonly />
+    </div>
+    
     <div class="mt-3">
         <label class="form-label">Name</label>
         <input type="text" class="form-control" asp-for="Name" />
@@ -28,7 +32,7 @@
 
     <div class="mt-3">
         <label class="form-label">Role</label>
-        <select asp-for="Role"></select>
+        <select asp-for="RoleId"></select>
     </div>
 
     <div class="mt-3">

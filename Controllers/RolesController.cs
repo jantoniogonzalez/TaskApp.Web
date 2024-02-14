@@ -2,11 +2,12 @@
 
 namespace TaskApp.Web.Controllers
 {
-    public class TaskController : Controller
+    public class RolesController : Controller
     {
         public IActionResult Index()
         {
             return View();
         }
+
     }
 }

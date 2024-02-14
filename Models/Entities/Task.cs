@@ -4,8 +4,8 @@
     {
         public Guid Id { set; get; }
         public string Name { set; get; }
-        public Person? CreatedBy { set; get; }
-        public Person? AssignedTo { set; get; }
+        public int? CreatedBy { set; get; }
+        public int? AssignedTo { set; get; }
         public bool Completed { set; get; }
         public DateTime DueDate { set; get; }
     }

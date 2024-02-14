@@ -13,5 +13,7 @@ namespace TaskApp.Web.Data
         public DbSet<Person> People { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Models.Entities.Task> Tasks { get; set; }
+
+
     }
 }
