@@ -38,7 +38,7 @@ namespace TaskApp.Web.Controllers
             await dbContext.SaveChangesAsync();
 
             
-            return View("List");
+            return RedirectToAction("List", "People");
         }
 
         [HttpGet]
@@ -49,15 +49,22 @@ namespace TaskApp.Web.Controllers
             return View(people);
         }
 
-        [HttpPut]
+        [HttpGet]
         public async Task<IActionResult> Edit(Guid id)
         {
             var person = await dbContext.People.FindAsync(id);
 
+            return View(person);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> Edit(Person person)
+        {
+            
 
             await dbContext.SaveChangesAsync();
 
-            return View(person);
+            return RedirectToAction("List", "People");
         }
 
         [HttpDelete]
