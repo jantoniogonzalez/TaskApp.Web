@@ -57,22 +57,43 @@ namespace TaskApp.Web.Controllers
             return View(person);
         }
 
-        [HttpPut]
-        public async Task<IActionResult> Edit(Person person)
+        [HttpPost]
+        public async Task<IActionResult> Edit(Person viewModel)
         {
-            
+            Guid personId = viewModel.Id;
+            // Find in db person
+            var person = await dbContext.People.FindAsync(personId);
 
+            // Edit person details
+            if (person is not null)
+            {
+                if (!String.IsNullOrEmpty(viewModel.Name))
+                {
+                    person.Name = viewModel.Name;
+                }
+                person.Email = viewModel.Email;
+                person.Phone = viewModel.Phone;
+            }
+
+            // Save the changes made
             await dbContext.SaveChangesAsync();
 
             return RedirectToAction("List", "People");
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> Delete(Guid id)
-        {
-            var person = await dbContext.People.FindAsync(id);
 
-            return View(person);
+        [HttpPost]
+        public async Task<IActionResult> Delete(Person viewModel)
+        {
+            var person = await dbContext.People.FindAsync(viewModel.Id);
+
+            if (person is not null)
+            {
+                dbContext.People.Remove(person);
+            }
+
+            await dbContext.SaveChangesAsync();
+            return RedirectToAction("List", "People");
         }
     }
 }

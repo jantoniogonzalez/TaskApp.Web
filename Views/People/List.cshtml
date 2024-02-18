@@ -8,6 +8,8 @@
 
 <h1>People</h1>
 
+<a asp-controller="People" asp-action="Add">Add Person</a>
+
 <table class="table">
     <thead>
         <tr>
@@ -15,7 +17,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
-            <th>Role</th>
+            <th> </th>
             <th> </th>
         </tr>
     </thead>
@@ -27,8 +29,8 @@
                 <td>@person.Name</td>
                 <td>@person.Email</td>
                 <td>@person.Phone</td>
-                <td>@person.RoleId</td>
                 <td><a asp-controller="People" asp-action="Edit" asp-route-id="@person.Id">Edit</a></td>
+                <td><a asp-controller="People" asp-action="Delete" asp-route-id="@person.Id">Delete</a></td>
             </tr>
         }
     </tbody>
